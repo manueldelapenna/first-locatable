@@ -1,0 +1,10 @@
+{    
+    "compilerOptions": {
+        "outDir": "../local-testing",
+        "typeRoots" : ["../node_modules/@types"],
+    },
+    "include":[
+        "*.ts"
+    ],
+    "extends": "../tsconfig.json"
+}

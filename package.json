@@ -1,0 +1,21 @@
+{
+    "name": "first-locatable",
+    "description": "Locate the first locatable path from a list of paths",
+    "version": "0.0.1",
+    "main": "lib/first-locatable.js",
+    "types": "lib/first-locatable.d.ts",
+    "dir": ["lib"],
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^16.9.1",
+        "@types/mocha": "^9.0.0",
+        "locate-path": "^6.0.0",
+        "mocha": "^9.1.1",
+        "nyc": "^15.1.0",
+        "typescript": "^4.4.3"
+    },
+    "scripts": {
+        "prepare": "tsc -p src",
+        "test": "npm run prepare && tsc -p test && mocha local-testing/test"
+    }
+}
