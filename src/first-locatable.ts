@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 
 type FirstLocatable = (pathList:string[]) => Promise<string|undefined>
 
-const asyncSome = async (arr:string[], predicate:(element:string)=>Promise<string|undefined>) => {
+const asyncSome = async (arr:string[], predicate:(element:string)=>Promise<boolean>) => {
 	for(let e of arr) {
 		if (await predicate(e)) return e;
 	}
@@ -17,11 +17,12 @@ const asyncSome = async (arr:string[], predicate:(element:string)=>Promise<strin
 export const firstLocatable: FirstLocatable = async (pathList:string[])=>
     await asyncSome(pathList, async (path) => {
         try{
-            return await fs.stat(path)
+            await fs.stat(path)
+            return true
         }catch(err){
             //@ts-ignore
             if(err.code = 'ENOENT'){
-                return undefined
+                return false
             }
             throw err
         }
